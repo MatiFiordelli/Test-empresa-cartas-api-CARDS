@@ -5,12 +5,11 @@ import Head from 'next/head'
 import { NomeContext } from './_app.js'
 import styles from '../styles/Home.module.css'
 
-
 export default function Home() {
 	const router = useRouter()
-	const {nome, setNome} = useContext(NomeContext)
-	const [rota, setRota] = useState('')
 	const campoNomeRef = useRef(null)
+	const {nome, setNome} = useContext(NomeContext) //Estado global
+	const [rota, setRota] = useState('')
 	
 	useEffect(()=>{
 		campoNomeRef.current.focus()
@@ -26,10 +25,8 @@ export default function Home() {
 		if(e.keyCode === 13) router.push('./naipes')
 	}
 
-
 	return (
 		<div className={styles.container}>
-			
 			<Head>
 				<title>Test Cards</title>
 				<meta name="description" content="Test Front End de Naipes" />
@@ -42,15 +39,16 @@ export default function Home() {
 				</h1>
 				<label htmlFor="campoNome">Insira o seu Nome: </label>
 			
-				<input type="text" id="campoNome"
+				<input type="text" 
+					id="campoNome"
+					className="campoNome"
 					maxLength="20"
 					onChange={(e)=>{setNome(e.target.value)}}
 					onKeyUp={(e)=>{detectaEnter(e)}}
 					ref={campoNomeRef}/>
 			
-				<Link href={rota}>Ver Cartas</Link> 
+				<Link href={rota} className="boton">Ver Cartas</Link> 
 			</main>
-				
 		</div>
 	)
 }

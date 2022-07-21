@@ -3,15 +3,22 @@ import '../styles/globals.css'
 import Main from '../components/Main.js'
 
 export const NomeContext = React.createContext()
+export const NaipesContext = React.createContext()
 
 export default function MyApp({ Component, pageProps }) {
+	//Estados globais
 	const [nome, setNome] = useState('')
+	const [dadosNaipes, setDadosNaipes] = useState([])
 	
 	return(
-		<Main>
-			<NomeContext.Provider value={{ nome, setNome}}>
-				<Component {...pageProps} />
-			</NomeContext.Provider>
-		</Main>
+		<>
+			<NomeContext.Provider value={{nome, setNome}}>
+				<NaipesContext.Provider value={{ dadosNaipes, setDadosNaipes}}>
+					<Main>
+						<Component {...pageProps} />
+					</Main>
+				</NaipesContext.Provider>
+			</NomeContext.Provider>	
+		</>
 	)
 }
