@@ -2,13 +2,11 @@ import { useEffect, useState, useRef, useContext } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import Fetch from '../components/Fetch.js'
 import { NomeContext } from './_app.js'
+import styles from '../styles/Home.module.css'
+
 
 export default function Home() {
-	Fetch()
-	
 	const router = useRouter()
 	const {nome, setNome} = useContext(NomeContext)
 	const [rota, setRota] = useState('')
@@ -50,8 +48,7 @@ export default function Home() {
 					onKeyUp={(e)=>{detectaEnter(e)}}
 					ref={campoNomeRef}/>
 			
-				
-				<Link href={rota}>Comenza</Link> 
+				<Link href={rota}>Ver Cartas</Link> 
 			</main>
 				
 		</div>
