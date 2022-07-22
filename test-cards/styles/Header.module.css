@@ -6,6 +6,7 @@
 	display:flex;
 	font-weight:bolder;
 	justify-content:flex-end;
+	align-items:center;
 	padding-right:10px;
 }
 
@@ -16,7 +17,7 @@
 	align-items:center;
 }
 
-.header>p>span{
+.header>.nome{
 	font-weight:normal;
 	font-style: italic;
 	text-transform:capitalize;

@@ -1,6 +1,5 @@
 html,
 body {
-	outline:none;
 	padding: 0;
 	margin: 0;
 	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -8,10 +7,25 @@ body {
 }
 
 a {
+	border-radius: 10px;
+	border:1px solid black;
 	color: inherit;
+	display:block;
+	font-weight:bold;
+	margin:10px auto;
+	padding:2px;
 	text-decoration: none;
+	width:100px;
 }
 
 * {
 	box-sizing: border-box;
+	outline:none;
 }
+
+input{
+	margin:0px auto;
+	margin-top:10px;
+	margin-botton:10px;
+}
+

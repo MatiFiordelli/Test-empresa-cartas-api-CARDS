@@ -1,10 +1,11 @@
 import { useState, useEffect, useContext, useRef } from 'react'
-import { NaipesContext } from './_app.js'
+import { NaipesContext, NomeContext } from './_app.js'
 import { useRouter } from 'next/router'
 import styles from '../styles/Naipes.module.css'
 
 export default function Naipes(){
 	const {dadosNaipes, setDadosNaipes} = useContext(NaipesContext) //estado global
+	const {nome, setNome} = useContext(NomeContext) //Estado global
 	const [componentesNaipes, setComponentesNaipes] = useState([])
 	const router = useRouter()
 	const deckId = useRef('')
@@ -13,7 +14,7 @@ export default function Naipes(){
 	//Renderizado inicial
 	useEffect(()=>{
 		//esta page deve ser acessada desde o index(tendo o nome) caso contrario redirige 
-		//if(nome === '') router.push('./')
+		if(nome === '') router.push('./')
 			
 		document.querySelector('#embaralha').disabled = true
 		document.querySelector('#mesanaipes').style.opacity = '1'

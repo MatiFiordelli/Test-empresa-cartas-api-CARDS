@@ -22,7 +22,7 @@ export default function Home() {
 	},[nome])
 	
 	const detectaEnter = (e) => {
-		if(e.keyCode === 13) router.push('./naipes')
+		if(e.keyCode === 13 && nome!=='') router.push('./naipes')
 	}
 
 	return (
@@ -34,20 +34,20 @@ export default function Home() {
 			</Head>
 
 			<main className={styles.main}>
-				<h1 className={styles.title}>
+				<h1 className={styles.main__h1}>
 					Baralho de cartas aleatórias
 				</h1>
+				
 				<label htmlFor="campoNome">Insira o seu Nome: </label>
-			
 				<input type="text" 
 					id="campoNome"
-					className="campoNome"
+					className={styles.main__campoNome}
 					maxLength="20"
 					onChange={(e)=>{setNome(e.target.value)}}
 					onKeyUp={(e)=>{detectaEnter(e)}}
 					ref={campoNomeRef}/>
 			
-				<Link href={rota} className="boton">Ver Cartas</Link> 
+				<Link href={rota} className={styles.main__boton}>Ver Cartas</Link> 
 			</main>
 		</div>
 	)

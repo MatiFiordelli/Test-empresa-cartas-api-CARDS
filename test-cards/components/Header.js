@@ -7,7 +7,9 @@ export default function Header(){
 
 	return(
 		<div className={styles.header}>
-			<p>Bemvindo <span>{nome}</span><div className={styles.greenled}/></p>
+			<p>Bemvindo</p>
+			<span className={styles.nome}>{nome}</span>
+			<span className={styles.greenled}></span>
 		</div>
 	)
 }
