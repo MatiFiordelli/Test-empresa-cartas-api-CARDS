@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext, useRef } from 'react'
 import { NaipesContext } from './_app.js'
 import { useRouter } from 'next/router'
+import styles from '../styles/Naipes.module.css'
 
 export default function Naipes(){
 	const {dadosNaipes, setDadosNaipes} = useContext(NaipesContext) //estado global
@@ -15,6 +16,8 @@ export default function Naipes(){
 		//if(nome === '') router.push('./')
 			
 		document.querySelector('#embaralha').disabled = true
+		document.querySelector('#mesanaipes').style.opacity = '1'
+		document.querySelector('#mesabotones').style.opacity = '1'
 	},[])	
 
 	useEffect(()=>{
@@ -24,7 +27,7 @@ export default function Naipes(){
 		.then(response=>{
 			deckId.current === ''
 				?deckId.current = response.deck_id
-				:fetchNaipes(2)
+				:fetchNaipes(5)
 		})
 	},[deckId])
 	
@@ -63,11 +66,13 @@ export default function Naipes(){
 		
 		for(let i in dadosNaipes){
 			obj.push(
-				<div className="card" key={i}>
-					<img src={dadosNaipes[i].imagem} width="70px" />
-					<p>Nome: {dadosNaipes[i].nome}</p>
-					<p>Descrição: {dadosNaipes[i].descricao}</p>
-					<p>Pontos: {dadosNaipes[i].pontos}</p>
+				<div className={styles.card} key={i}>
+					<img src={dadosNaipes[i].imagem} width="70%" className={styles.card__img}/>
+					<section className={styles.card__section}>
+						<p className={styles.card__p}>Nome: {dadosNaipes[i].nome}</p>
+						<p className={styles.card__p}>Descrição: <br/>{dadosNaipes[i].descricao}</p>
+						<p className={styles.card__p}>Pontos: {dadosNaipes[i].pontos}</p>
+					</section>
 				</div>
 			)
 		}
@@ -92,15 +97,17 @@ export default function Naipes(){
 	
 	return(
 		<>
-			<div className="mainNaipes">
+			<div className={styles.mainnaipes} id="mesanaipes">
 				{componentesNaipes}
+			</div>
+			<div className={styles.mainbotones} id="mesabotones">
 				<button type="button" 
 					id="puxaNaipe" 
-					className="boton"
+					className={styles.mainbotones__boton}
 					onClick={()=>{fetchNaipes(1)}}>Puxa nova carta</button>
 				<button type="button" 
 					id="embaralha"
-					className="boton"
+					className={styles.mainbotones__boton}
 					onClick={()=>{embaralha()}}>Embaralha cartas</button>
 			</div>
 		</>

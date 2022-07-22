@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+.footer{
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	align-items:center;
+	background-color:black;
+	color:white;
+}
+.footer p{
+	margin:12px;
+	padding:0px;
+}
+
+.footer p:first-child{
+	font-size:0.9rem;
+}
+
+.footer p:last-child{
+	font-size:0.8rem;
+	font-style:italic;
+}
