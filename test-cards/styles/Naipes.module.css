@@ -36,7 +36,7 @@
 	color:#ddddff;
 }
 .mainbotones__boton:disabled{
-	background-color:#444444;
+	background-image: radial-gradient(#777777, #AAAAAA);
 }
 
 .card{

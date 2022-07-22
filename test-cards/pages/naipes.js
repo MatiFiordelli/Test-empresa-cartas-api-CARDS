@@ -14,8 +14,9 @@ export default function Naipes(){
 	//Renderizado inicial
 	useEffect(()=>{
 		//esta page deve ser acessada desde o index(tendo o nome) caso contrario redirige 
-		if(nome === '') router.push('./')
-			
+		if(nome === ''){
+			router.push('./')
+		}
 		document.querySelector('#embaralha').disabled = true
 		document.querySelector('#mesanaipes').style.opacity = '1'
 		document.querySelector('#mesabotones').style.opacity = '1'
@@ -34,32 +35,35 @@ export default function Naipes(){
 	
 	//Obtem os naipes inicialmente 5 e depois de a um quando puxa novos naipes
 	const fetchNaipes = (quantidade) => {
-		let url = `http://deckofcardsapi.com/api/deck/${deckId.current}/draw/?count=${quantidade}`
-		fetch(url)
-		.then(data=>data.json())
-		.then(response=>{
-			let	arrayTemp = dadosNaipes
-			let objDadosNaipes 
-			
-			for(let i in response.cards){
-				objDadosNaipes = { nome: response.cards[i].code,
-								descricao: response.cards[i].value + ' de ' + response.cards[i].suit,
-								imagem: response.cards[i].image,
-								pontos: numeroAleatorio()
+		if(nome !== ''){
+			let url = `http://deckofcardsapi.com/api/deck/${deckId.current}/draw/?count=${quantidade}`
+			fetch(url)
+			.then(data=>data.json())
+			.then(response=>{
+				let	arrayTemp = dadosNaipes
+				let objDadosNaipes 
+				
+				for(let i in response.cards){
+					objDadosNaipes = { nome: response.cards[i].code,
+									descricao: response.cards[i].value + ' de ' + response.cards[i].suit,
+									imagem: response.cards[i].image,
+									pontos: numeroAleatorio()
+					}
+					arrayTemp.push(objDadosNaipes)  
 				}
-				arrayTemp.push(objDadosNaipes)  
-			}
-			setDadosNaipes(arrayTemp)
-			
-			//Se puxou uma carta conta +1
-			quantidade === 1
-				?contador.current += 1
-				:document.querySelector('#embaralha').disabled = false
-			
-			if(contador.current===3){document.querySelector('#puxaNaipe').disabled = true}
-			
-			renderNaipes()
-		})
+				setDadosNaipes(arrayTemp)
+				
+				//Se puxou uma carta conta +1
+				quantidade === 1
+					?contador.current += 1
+					:document.querySelector('#embaralha').disabled = false
+				
+				if(contador.current===3){
+					document.querySelector('#puxaNaipe').disabled = true
+				}
+				renderNaipes()
+			})
+		}
 	}
 	
 	const renderNaipes = () => {
