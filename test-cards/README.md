@@ -1,3 +1,12 @@
+Projeto criado com Next.js utilizando a API de http://deckofcardsapi.com/ para mostrar naipes aleatoriamente. 
+O projeto pode ser testado por ejemplo com NPM colocando npm run dev e assim ver o webapp no browser, na url http://localhost:3000
+os estilos CSS a modo de demonstracion foram feitos de varias maneiras. Utilizando a Metodologia BEM, Css Inline, Css External Stylesheets, e o Css Modules.
+
+Tem duas pages, index.js e naipes.js. Assim como o arquivo _app.js qu serve de Component Layout.
+utilizei dois estados globais com Context API, eles são nome (userName) e dadosNaipes(as informações referentes a cada naipe).
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
