@@ -31,6 +31,7 @@ export default function Home() {
 				<title>Test Cards</title>
 				<meta name="description" content="Test Front End de Naipes" />
 				<link rel="icon" href="/favicon.ico" />
+				<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 			</Head>
 
 			<main className={styles.main}>
