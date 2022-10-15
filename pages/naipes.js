@@ -68,7 +68,7 @@ export default function Naipes(){
 	
 	const renderNaipes = () => {
 		let obj = []
-		
+		console.log(dadosNaipes)
 		for(let i in dadosNaipes){
 			obj.push(
 				<div className={styles.card} key={i}>
