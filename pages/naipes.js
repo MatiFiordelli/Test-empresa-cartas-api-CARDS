@@ -24,7 +24,7 @@ export default function Naipes(){
 
 	useEffect(()=>{
 		//Obtem um novo baralho e guarda o id no deckId (ref)
-		fetch('http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
+		fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
 		.then(data=>data.json())
 		.then(response=>{
 			deckId.current === ''
@@ -36,7 +36,7 @@ export default function Naipes(){
 	//Obtem os naipes inicialmente 5 e depois de a um quando puxa novos naipes
 	const fetchNaipes = (quantidade) => {
 		if(nome !== ''){
-			let url = `http://deckofcardsapi.com/api/deck/${deckId.current}/draw/?count=${quantidade}`
+			let url = `https://deckofcardsapi.com/api/deck/${deckId.current}/draw/?count=${quantidade}`
 			fetch(url)
 			.then(data=>data.json())
 			.then(response=>{
