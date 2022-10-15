@@ -103,7 +103,7 @@ export default function Naipes(){
 	return(
 		<>
 			<div className={styles.mainnaipes} id="mesanaipes">
-				{componentesNaipes}
+				{[...componentesNaipes]}
 			</div>
 			<div className={styles.mainbotones} id="mesabotones">
 				<button type="button" 
