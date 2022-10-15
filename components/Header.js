@@ -9,7 +9,7 @@ export default function Header(){
 		<div className={styles.header}>
 			<p>Bemvindo</p>
 			<span className={styles.nome}>{nome}</span>
-			<span className={styles.greenled}></span>
+			<span className={`${styles.led} ${nome!==''?styles.greenled:styles.redled}`} ></span>
 		</div>
 	)
 }

@@ -1,8 +1,4 @@
-@charset "UTF-8"
-
 .main__h1{
-	display:flex;
-	flex-direction:rows;
 	font-size:2rem;
 }
 

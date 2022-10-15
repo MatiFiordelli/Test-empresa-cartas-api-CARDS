@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext, useRef } from 'react'
 import { NaipesContext, NomeContext } from './_app.js'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 import styles from '../styles/Naipes.module.css'
 
 export default function Naipes(){
@@ -11,27 +12,6 @@ export default function Naipes(){
 	const deckId = useRef('')
 	const contador = useRef(0)
 	
-	//Renderizado inicial
-	useEffect(()=>{
-		//esta page deve ser acessada desde o index(tendo o nome) caso contrario redirige 
-		if(nome === ''){
-			router.push('./')
-		}
-		document.querySelector('#embaralha').disabled = true
-		document.querySelector('#mesanaipes').style.opacity = '1'
-		document.querySelector('#mesabotones').style.opacity = '1'
-	},[])	
-
-	useEffect(()=>{
-		//Obtem um novo baralho e guarda o id no deckId (ref)
-		fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
-		.then(data=>data.json())
-		.then(response=>{
-			deckId.current === ''
-				?deckId.current = response.deck_id
-				:fetchNaipes(5)
-		})
-	},[deckId])
 	
 	//Obtem os naipes inicialmente 5 e depois de a um quando puxa novos naipes
 	const fetchNaipes = (quantidade) => {
@@ -68,11 +48,14 @@ export default function Naipes(){
 	
 	const renderNaipes = () => {
 		let obj = []
-		console.log(dadosNaipes)
 		for(let i in dadosNaipes){
 			obj.push(
 				<div className={styles.card} key={i}>
-					<img src={dadosNaipes[i].imagem} width="70%" className={styles.card__img}/>
+					<Image src={dadosNaipes[i].imagem} 
+							width="100%" 
+							height="130%" 
+							className={styles.card__img}
+							alt="Naipe"/>
 					<section className={styles.card__section}>
 						<p className={styles.card__p}>Nome: {dadosNaipes[i].nome}</p>
 						<p className={styles.card__p}>Descrição: <br/>{dadosNaipes[i].descricao}</p>
@@ -99,6 +82,31 @@ export default function Naipes(){
 	const numeroAleatorio = () => {
 		return Math.floor(Math.random() * 11)
 	}
+
+	useEffect(()=>{
+		//Obtem um novo baralho e guarda o id no deckId (ref)
+		fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
+		.then(data=>data.json())
+		.then(response=>{
+			if(deckId.current === ''){
+				deckId.current = response.deck_id
+				fetchNaipes(5)
+			}
+		})
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	},[deckId.current])
+
+	//Renderizado inicial
+	useEffect(()=>{
+		//esta page deve ser acessada desde o index(tendo o nome) caso contrario redirige 
+		if(nome === ''){
+			router.push('./')
+		}
+		document.querySelector('#embaralha').disabled = true
+		document.querySelector('#mesanaipes').style.opacity = '1'
+		document.querySelector('#mesabotones').style.opacity = '1'
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	},[])
 	
 	return(
 		<>

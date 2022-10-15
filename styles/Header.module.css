@@ -24,12 +24,20 @@
 	margin:0px 4px;
 }
 
-.header .greenled{
+.header .led{
 	display:flex;
 	border:none;
 	border-radius:50%;
-	background-color:#00ff00;
 	margin:4px;
 	width:10px;
 	height:10px;
+	background-color:#858585;
+}
+
+.header .greenled{
+	background-color:#00ff00;
+}
+
+.header .redled{
+	background-color:#ff0000;
 }

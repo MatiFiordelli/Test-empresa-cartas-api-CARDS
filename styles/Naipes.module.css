@@ -1,5 +1,3 @@
-@charset "UTF-8";
-
 .mainnaipes, .mainbotones{
 	background-color:#59a834;
 	display:flex;
@@ -8,11 +6,10 @@
 	align-items:center;
 	opacity: 0;
 	transition:1000ms opacity;
-	outline:none;
 }
 
 .mainnaipes{
-	height:70vh;	
+	height:100%;	
 }
 
 .mainbotones{
@@ -48,11 +45,11 @@
 	justify-content:flex-start;
 	align-items:center;
 	text-align:center;
+	padding:10px;
 }
 @media only screen and (max-width:460px){
 	.mainnaipes{
 		display:grid;
-		height:100%;
 		padding-top:10px;
 	}
 }
