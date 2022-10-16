@@ -5,7 +5,7 @@ os estilos CSS a modo de demonstracion foram feitos de varias maneiras. Utilizan
 Tem duas pages, index.js e naipes.js. Assim como o arquivo _app.js qu serve de Component Layout.
 utilizei dois estados globais com Context API, eles são nome (userName) e dadosNaipes(as informações referentes a cada naipe).
 
-https://test-cartas-o8gxa0p5m-matifiordelli.vercel.app/
+https://test-cartas-k6svgn5nn-matifiordelli.vercel.app/
 
 
 
